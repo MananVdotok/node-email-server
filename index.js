@@ -9,6 +9,10 @@ app.use(express.json());
 app.use(cors());
 
 app.route("/sendMessage").post(sendMsg);
+app.route("/hi").get((req, res) => {
+  var fullUrl = req.protocol + "://" + req.get("host") + req.originalUrl;
+  return res.json({ sayhi: `hello world from server ${fullUrl}` });
+});
 
 app.listen(port, () => {
   console.log(`server is listining on ${port}`);
