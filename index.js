@@ -9,6 +9,10 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/api", apiRouter);
+app.route("/hi").get((req, res) => {
+  console.log("returned date");
+  return res.status(200).json({ message: new Date(Date.now()).toString() });
+});
 
 // app.route("/").get((req, res) => {
 //   var fullUrl = req.protocol + "://" + req.get("host") + req.originalUrl;
